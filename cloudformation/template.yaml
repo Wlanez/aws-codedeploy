@@ -58,7 +58,7 @@ Parameters:
     Description: The Amazon EC2 Linux instance Amazon Machine Image (AMI), which designates the configuration of the new instance.
   InstanceType:
     Type: String
-    Default: t2.medium
+    Default: t2.micro
     Description: The type of Amazon EC2 Linux instances that will be launched for this project.
   AutoScalingGroupMinSize:
     Type: Number
@@ -70,7 +70,7 @@ Parameters:
     Description: Enter the Max Size for the ASG
   AutoScalingGroupDesiredCapacity:
     Type: Number
-    Default: 2
+    Default: 1
     Description: Enter the Max Size for the ASG
   ThumbprintList:
     Type: String 
@@ -383,7 +383,7 @@ Resources:
       Roles:
         - Ref: WebappRole
   WebappLaunchConfig:
-    Type: AWS::AutoScaling::LaunchConfiguration
+    Type: AWS::EC2::LaunchTemplate
     Properties:
       AssociatePublicIpAddress: true
       ImageId:
